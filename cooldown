@@ -1,0 +1,42 @@
+const discord = require("discord.js")
+const Client = require('fortnite-master');
+const db = require("quick.db")
+let cooldown = new Set();
+let cdseconds = 5;
+
+module.exports.run = async (bot,message,args) => {
+  
+
+if (cooldown.has(message.author.id)){
+	message.delete();
+	message.channel.send("You have to wait 5 seconds")
+	return;
+}
+if (!message.member.hasPermission("ADMINISTRATOR")){
+	cooldown.add(message.author.id);
+	message.channel.send
+
+}
+
+
+setTimeout(() => {
+	cooldown.delete(message.author.id)
+
+}, cdseconds * 1000)
+
+	
+
+}		
+
+
+module.exports.help = {
+	name: "test"
+}
+
+
+
+
+
+bot.on("guildMemberAdd", member => {
+    member.user.send("Welcome")
+})
